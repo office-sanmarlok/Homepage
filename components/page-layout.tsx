@@ -13,7 +13,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
   const { sidebarOpen, toggleSidebar } = useSidebar()
 
   return (
-    <div className="min-h-screen bg-white text-black relative">
+    <div className="min-h-screen bg-[#f1efe2] text-black relative noise-effect">
       {/* Floating Menu Button */}
       <svg
         width="100"
@@ -21,11 +21,12 @@ export default function PageLayout({ children }: PageLayoutProps) {
         viewBox="0 0 106.52 320.93"
         xmlns="http://www.w3.org/2000/svg"
         className="fixed top-6 right-6 z-50 cursor-pointer hover:opacity-70 transition-opacity duration-300 leading-7 px-0 mx-0"
+        style={{ mixBlendMode: "difference" }}
         onClick={toggleSidebar}
       >
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -34,8 +35,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -44,8 +45,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -53,10 +54,10 @@ export default function PageLayout({ children }: PageLayoutProps) {
           width="102.52"
           height="12.68"
         />
-        <circle fill="#000" stroke="#000" strokeMiterlimit="10" strokeWidth="4" cx="53.26" cy="123.2" r="44.2" />
+        <circle fill="#fff" stroke="#fff" strokeMiterlimit="10" strokeWidth="4" cx="53.26" cy="123.2" r="44.2" />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -65,8 +66,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect className="border-0"
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -75,8 +76,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -85,8 +86,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -95,8 +96,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"
@@ -105,8 +106,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
           height="12.68"
         />
         <rect
-          fill="#000"
-          stroke="#000"
+          fill="#fff"
+          stroke="#fff"
           strokeMiterlimit="10"
           strokeWidth="4"
           x="2"

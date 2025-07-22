@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Home, Building, Briefcase, Mail, ChevronRight } from "lucide-react"
 
 interface SidebarProps {
   isOpen: boolean
@@ -11,64 +10,55 @@ interface SidebarProps {
 const menuItems = [
   {
     title: "ホーム",
+    titleEn: "Home",
     href: "/",
-    icon: Home,
-    description: "トップページ",
   },
   {
     title: "会社概要",
+    titleEn: "About",
     href: "/about",
-    icon: Building,
-    description: "私たちについて",
   },
   {
     title: "サービス",
+    titleEn: "Services",
     href: "/services",
-    icon: Briefcase,
-    description: "提供サービス",
   },
   {
     title: "お問い合わせ",
+    titleEn: "Contact",
     href: "/contact",
-    icon: Mail,
-    description: "ご連絡はこちら",
   },
 ]
 
 export default function Sidebar({ isOpen }: SidebarProps) {
   const pathname = usePathname()
 
-  if (!isOpen) return null
-
   return (
-    <aside className="fixed right-0 top-0 h-full w-[30%] bg-black border-l border-gray-800 shadow-2xl z-40">
+    <aside className={`fixed right-0 top-0 h-full w-[30%] bg-black border-l border-gray-800 shadow-2xl z-40 transition-transform duration-300 ease-in-out ${
+      isOpen ? 'translate-x-0' : 'translate-x-full'
+    }`}>
       <div className="p-8">
-        <nav className="space-y-3">
+        <nav className="space-y-8">
           {menuItems.map((item) => {
-            const Icon = item.icon
             const isActive = pathname === item.href
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center p-4 transition-all duration-300 group border-l-2 ${
-                  isActive
-                    ? "bg-white text-black border-l-white"
-                    : "hover:bg-gray-800 text-gray-300 border-l-transparent hover:border-l-gray-600"
-                }`}
+                className="block group"
               >
-                <div className="flex-1">
-                  <div className="font-medium text-sm tracking-wide">{item.title}</div>
-                  <div className={`text-xs mt-1 ${isActive ? "text-gray-500" : "text-gray-400"}`}>
-                    {item.description}
-                  </div>
+                <div className={`transition-all duration-300 ${
+                  isActive ? "text-white" : "text-gray-400 hover:text-gray-200"
+                }`}>
+                  <div className="text-lg font-light tracking-wide">{item.title}</div>
+                  <div className="text-sm mt-1">{item.titleEn}</div>
+                  <div className={`h-px mt-2 transition-all duration-300 ${
+                    isActive 
+                      ? "bg-white w-full" 
+                      : "bg-gray-600 w-0 group-hover:w-full"
+                  }`} />
                 </div>
-                <ChevronRight
-                  className={`h-4 w-4 transition-all duration-300 ${
-                    isActive ? "text-black" : "text-gray-400 group-hover:translate-x-1"
-                  }`}
-                />
               </Link>
             )
           })}
