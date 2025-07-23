@@ -13,14 +13,12 @@ export default function PageLayout({ children }: PageLayoutProps) {
   const { sidebarOpen, toggleSidebar } = useSidebar()
 
   return (
-    <div className="min-h-screen bg-[#f1efe2] text-black relative noise-effect">
+    <div className="min-h-screen bg-[#F4F5F7] text-black relative global-grain">
       {/* Floating Menu Button */}
       <svg
-        width="100"
-        height="100"
         viewBox="0 0 106.52 320.93"
         xmlns="http://www.w3.org/2000/svg"
-        className="fixed top-6 right-6 z-50 cursor-pointer hover:opacity-70 transition-opacity duration-300 leading-7 px-0 mx-0"
+        className="fixed top-4 right-4 md:top-6 md:right-6 z-50 cursor-pointer hover:opacity-70 transition-opacity duration-300 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
         style={{ mixBlendMode: "difference" }}
         onClick={toggleSidebar}
       >
@@ -117,13 +115,11 @@ export default function PageLayout({ children }: PageLayoutProps) {
         />
       </svg>
 
-      <div className="flex">
-        <main className={`transition-all duration-500 ease-in-out ${sidebarOpen ? "w-[70%]" : "w-full"}`}>
-          {children}
-        </main>
+      <main className="w-full">
+        {children}
+      </main>
 
-        <Sidebar isOpen={sidebarOpen} />
-      </div>
+      <Sidebar isOpen={sidebarOpen} />
     </div>
   )
 }

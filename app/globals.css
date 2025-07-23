@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'HOT-Tenshokk';
+  src: url('/HOT-Tenshokk-M.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -93,38 +100,57 @@ body {
   }
 }
 
-/* Noise effect */
-.noise-effect {
-  position: relative;
-}
-
-.noise-effect::before {
+/* グローバルグレイン効果 */
+.global-grain::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.2;
-  z-index: 1;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  background-color: #808080;
+  opacity: 0.8;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
-/* SVGボタンをノイズエフェクトから除外 */
-.no-noise {
-  position: relative;
-  z-index: 10;
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, 1%); }
+  20% { transform: translate(1%, -1%); }
+  30% { transform: translate(-1%, -1%); }
+  40% { transform: translate(1%, 1%); }
+  50% { transform: translate(-1%, 0); }
+  60% { transform: translate(0, 1%); }
+  70% { transform: translate(1%, 0); }
+  80% { transform: translate(0, -1%); }
+  90% { transform: translate(-1%, 1%); }
 }
 
-.no-noise::after {
+/* フィルムグレイン効果 - 実際の画像を使用 */
+.film-grain-container::after {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  z-index: -1;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
+  height: 300%;
+  width: 300%;
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  opacity: 0.1;
+  animation: animateGrain 0.5s steps(10) infinite;
+  z-index: 40;
+  pointer-events: none;
+}
+
+@keyframes animateGrain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, -20%); }
+  30% { transform: translate(-5%, -10%); }
+  40% { transform: translate(-15%, -20%); }
+  50% { transform: translate(-5%, -10%); }
+  60% { transform: translate(-15%, -20%); }
+  70% { transform: translate(-5%, -10%); }
+  80% { transform: translate(-15%, -20%); }
+  90% { transform: translate(-5%, -10%); }
+  100% { transform: translate(-15%, -20%); }
 }
