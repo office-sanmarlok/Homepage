@@ -2,26 +2,37 @@
 import PageLayout from "@/components/page-layout"
 import Image from "next/image"
 
+interface LogoLayer {
+  src: string
+  width: number
+  height: number
+}
+
+interface VignetteLayer {
+  opacity: number
+  size: string
+  color: string
+}
+
+interface FilmGrainLayer {
+  opacity: number
+  animationDuration: number
+  imageUrl: string
+}
+
 export default function HomePage() {
   // レイヤー1: ホームページロゴ
-  const logoLayer = {
+  const logoLayer: LogoLayer = {
     src: "/306-logo-homepage.png",
     width: 1200,
     height: 1000,
   }
 
   // レイヤー2: ビネット効果
-  const vignetteLayer = {
+  const vignetteLayer: VignetteLayer = {
     opacity: 0.6, // 透明度 (0-1)
     size: '100%', // グラデーションのサイズ
     color: 'rgba(0, 0, 0, 0.8)', // ビネットの色
-  }
-
-  // レイヤー3: アニメーションフィルムグレイン（最上層）
-  const filmGrainLayer = {
-    opacity: 1, // グレイン効果の透明度 (0-1)
-    animationDuration: 1, // アニメーション周期（秒）
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png', // ノイズテクスチャ画像
   }
 
   return (
