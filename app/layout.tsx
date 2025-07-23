@@ -8,8 +8,31 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Office 306",
-  description: "革新的なソリューションで、あなたのビジネスを次のレベルへ",
-    generator: 'v0.dev'
+  description: "office 306",
+  generator: 'v0.dev',
+  metadataBase: new URL('https://sanmarlok.org'),
+  openGraph: {
+    title: 'Office 306',
+    description: 'office 306',
+    url: 'https://sanmarlok.org/',
+    siteName: 'Office 306',
+    images: [
+      {
+        url: '/OGP.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Office 306',
+      }
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Office 306',
+    description: 'office 306',
+    images: ['/OGP.jpg'],
+  },
 }
 
 export default function RootLayout({
